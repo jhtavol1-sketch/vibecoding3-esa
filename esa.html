@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>W 영어학원 - 수강 프로그램 안내</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .program-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .program-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-sm py-6 px-4 sm:px-6 lg:px-8 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#" class="text-3xl font-bold text-indigo-600">W 영어학원</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#회화" class="text-gray-600 hover:text-indigo-600 font-medium transition-colors">회화</a>
+                <a href="#시험" class="text-gray-600 hover:text-indigo-600 font-medium transition-colors">시험</a>
+                <a href="#비즈니스" class="text-gray-600 hover:text-indigo-600 font-medium transition-colors">비즈니스</a>
+            </nav>
+            <button class="md:hidden p-2 rounded-md text-gray-400 hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="relative py-20 px-4 sm:px-6 lg:px-8 bg-indigo-50">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-4 leading-tight">
+                당신의 영어, 더블유 영어학원에서 완성하세요.
+            </h1>
+            <p class="text-lg sm:text-xl text-gray-600 mb-8">
+                개인의 목표와 수준에 맞는 체계적인 커리큘럼으로 영어 실력의 성장을 경험해 보세요.
+            </p>
+            <a href="#programs" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 transition-colors">
+                프로그램 둘러보기
+            </a>
+        </div>
+    </div>
+
+    <!-- Programs Section -->
+    <div id="programs" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- General English -->
+            <section id="회화" class="mb-16">
+                <div class="flex items-center justify-center mb-10">
+                    <hr class="w-1/4 border-gray-300">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mx-4 whitespace-nowrap">실용 영어 회화</h2>
+                    <hr class="w-1/4 border-gray-300">
+                </div>
+                <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+                    일상에서 막힘없이 영어를 사용하고 싶다면, 실용 영어 회화 프로그램이 정답입니다. 말하기 두려움을 없애고 자신감을 키워 드립니다.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <!-- Beginner Card -->
+                    <div class="program-card bg-gray-50 p-8 rounded-3xl shadow-lg border border-gray-200">
+                        <div class="flex items-center mb-4">
+                            <span class="text-4xl text-indigo-500 mr-4">&#x1F4DA;</span>
+                            <h3 class="text-2xl font-bold text-gray-900">왕초보 회화 (Beginner)</h3>
+                        </div>
+                        <ul class="list-disc list-inside space-y-2 text-gray-600">
+                            <li>**대상:** 영어를 처음 시작하거나 기초를 다지고 싶은 분</li>
+                            <li>**목표:** 자기소개, 길 찾기 등 일상생활에 필요한 기본 표현 구사</li>
+                            <li>**특징:** 알파벳 발음부터 시작해, 간단한 문장 구조를 반복 학습하며 말하기 습관을 형성합니다.</li>
+                        </ul>
+                    </div>
+                    <!-- Intermediate Card -->
+                    <div class="program-card bg-gray-50 p-8 rounded-3xl shadow-lg border border-gray-200">
+                        <div class="flex items-center mb-4">
+                            <span class="text-4xl text-indigo-500 mr-4">&#x1F4AC;</span>
+                            <h3 class="text-2xl font-bold text-gray-900">중급 회화 (Intermediate)</h3>
+                        </div>
+                        <ul class="list-disc list-inside space-y-2 text-gray-600">
+                            <li>**대상:** 기초 문법은 알지만, 실제 대화가 어려운 분</li>
+                            <li>**목표:** 다양한 주제로 자연스럽게 대화하고, 자신의 의견을 논리적으로 표현</li>
+                            <li>**특징:** 영화, TED Talk 등 흥미로운 콘텐츠를 활용해 어휘력과 표현력을 확장하고, 유창성을 높입니다.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Exam Prep Section -->
+            <section id="시험" class="mb-16">
+                <div class="flex items-center justify-center mb-10">
+                    <hr class="w-1/4 border-gray-300">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mx-4 whitespace-nowrap">공인 시험 대비</h2>
+                    <hr class="w-1/4 border-gray-300">
+                </div>
+                <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+                    단기간에 목표 점수를 달성하고 싶다면, 최신 출제 경향을 완벽 분석한 공인 시험 대비반과 함께하세요.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <!-- TOEIC Card -->
+                    <div class="program-card bg-gray-50 p-8 rounded-3xl shadow-lg border border-gray-200">
+                        <div class="flex items-center mb-4">
+                            <span class="text-4xl text-indigo-500 mr-4">&#x1F4C6;</span>
+                            <h3 class="text-2xl font-bold text-gray-900">TOEIC (토익)</h3>
+                        </div>
+                        <ul class="list-disc list-inside space-y-2 text-gray-600">
+                            <li>**대상:** 취업, 졸업 등 점수가 필요한 분</li>
+                            <li>**목표:** 실전 모의고사와 파트별 문제 풀이 전략으로 목표 점수 달성</li>
+                            <li>**특징:** 빈출 어휘와 문법을 집중적으로 다루고, 오답 노트를 통해 취약점을 보완합니다.</li>
+                        </ul>
+                    </div>
+                    <!-- TOEFL Card -->
+                    <div class="program-card bg-gray-50 p-8 rounded-3xl shadow-lg border border-gray-200">
+                        <div class="flex items-center mb-4">
+                            <span class="text-4xl text-indigo-500 mr-4">&#x1F393;</span>
+                            <h3 class="text-2xl font-bold text-gray-900">TOEFL (토플)</h3>
+                        </div>
+                        <ul class="list-disc list-inside space-y-2 text-gray-600">
+                            <li>**대상:** 유학, 교환학생을 준비하는 분</li>
+                            <li>**목표:** TOEFL iBT 각 파트에서 고득점 획득</li>
+                            <li>**특징:** 실제 시험과 동일한 환경에서 실전 연습을 하고, 전문 강사의 1:1 첨삭으로 완성도를 높입니다.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Business English Section -->
+            <section id="비즈니스" class="mb-16">
+                <div class="flex items-center justify-center mb-10">
+                    <hr class="w-1/4 border-gray-300">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mx-4 whitespace-nowrap">비즈니스 영어</h2>
+                    <hr class="w-1/4 border-gray-300">
+                </div>
+                <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+                    글로벌 업무 능력을 키우고 싶다면, 비즈니스 영어 프로그램으로 실무 역량을 강화하세요.
+                </p>
+                <div class="program-card bg-gray-50 p-8 rounded-3xl shadow-lg border border-gray-200 max-w-3xl mx-auto">
+                    <div class="flex items-center mb-4">
+                        <span class="text-4xl text-indigo-500 mr-4">&#x1F4BC;</span>
+                        <h3 class="text-2xl font-bold text-gray-900">비즈니스 영어</h3>
+                    </div>
+                    <ul class="list-disc list-inside space-y-2 text-gray-600">
+                        <li>**대상:** 해외 기업 취업, 이직, 해외 출장을 준비하는 직장인</li>
+                        <li>**목표:** 비즈니스 회의, 프레젠테이션, 이메일 작성 등 실무 영어 능력 향상</li>
+                        <li>**특징:** 실제 비즈니스 상황을 가정한 롤플레잉과 케이스 스터디를 통해 즉시 활용 가능한 표현을 익힙니다.</li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+    </div>
+    
+    <!-- Call to Action Section -->
+    <div class="bg-indigo-600 py-16 text-center text-white rounded-t-3xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-4">당신의 영어 목표, W 영어학원과 함께 이루세요!</h2>
+            <p class="text-lg mb-8 opacity-90">지금 바로 상담받고, 당신의 새로운 영어 여정을 시작하세요.</p>
+            <a href="#" class="inline-flex items-center justify-center px-8 py-3 border border-white text-base font-medium rounded-full hover:bg-white hover:text-indigo-600 transition-colors">
+                상담 신청하기
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-gray-300 py-8 px-4 sm:px-6 lg:px-8 text-center rounded-t-3xl mt-4">
+        <div class="max-w-7xl mx-auto">
+            <p>&copy; 2024 W 영어학원. All Rights Reserved.</p>
+            <div class="mt-4 space-x-4">
+                <a href="#" class="hover:text-white transition-colors">이용약관</a>
+                <a href="#" class="hover:text-white transition-colors">개인정보처리방침</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
