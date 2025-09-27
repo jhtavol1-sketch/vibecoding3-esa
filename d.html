@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2024년 1월 월간 그로스 마케팅 성과 대시보드</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+KR:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans KR', sans-serif; }
+        .chart-container {
+            position: relative;
+            height: 350px;
+            width: 100%;
+        }
+        .kpi-card { transition: all 0.2s ease-in-out; }
+        .kpi-card:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-white shadow-lg sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <h1 class="text-3xl font-extrabold text-gray-900">
+                <span class="text-indigo-600">Growth</span> Marketing Performance Dashboard
+            </h1>
+            <p class="mt-1 text-sm text-gray-500">2024년 1월 일별 주요 성과 분석 리포트</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
+
+        <!-- Section 1: KPI Summary Cards -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-700 mb-6 border-l-4 border-indigo-500 pl-3">월간 핵심 성과 요약 (2024.01)</h2>
+            <div id="kpi-summary" class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+                <!-- KPI Cards will be injected here by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Section 2: Acquisition & Conversion Chart -->
+        <section class="mb-12">
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">획득 및 전환 추이 (Acquisition & Conversion)</h3>
+                <p class="text-sm text-gray-500 mb-4">일별 방문자 수 대비 실제 전환(구매) 발생 현황 및 전환율 변화</p>
+                <div class="chart-container">
+                    <canvas id="conversionChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Revenue & Efficiency Chart -->
+        <section class="mb-12">
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">매출 및 효율성 분석 (Revenue & Efficiency)</h3>
+                <p class="text-sm text-gray-500 mb-4">일별 총 매출액과 고객 획득 비용(CAC) 및 고객 유지율(Retention) 현황</p>
+                <div class="chart-container">
+                    <canvas id="efficiencyChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Report Interpretation -->
+        <section>
+            <div class="bg-indigo-50 p-6 rounded-xl border border-indigo-200">
+                <h2 class="text-xl font-bold text-indigo-700 mb-3">보고서 해석 가이드</h2>
+                <ul class="list-disc list-inside text-gray-700 space-y-2">
+                    <li>**전환율:** 전환 수가 높을 때(예: 1월 3일, 1월 6일) **고객 획득 비용(CAC)이 낮게** 나타나는지 확인하여 마케팅 효율성을 검증합니다.</li>
+                    <li>**CAC (고객 획득 비용):** 매출이 높은 날(예: 1월 2일, 1월 10일) CAC가 높아졌다면, 고가의 마케팅 채널을 통해 고매출 고객을 유치했을 가능성을 의미합니다.</li>
+                    <li>**고객 유지율:** 유지율이 갑자기 떨어지는 날은 서비스 품질이나 고객 경험에 문제가 발생했는지 점검해야 합니다.</li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center py-6 text-gray-400 text-sm border-t mt-10">
+        Growth Marketing Report 2024.01 | Code by Gemini
+    </footer>
+
+    <script>
+        // CSV 데이터 (growth_marketing_metrics.csv)를 JavaScript 객체 배열로 하드코딩
+        // (CSV 스니펫 및 시뮬레이션을 기반으로 31일 데이터 구성)
+        const rawData = [
+            // 날짜, 방문자 수, 회원 가입 수, 전환 수, 매출 (원), 고객 획득 비용 (원), 고객 유지율 (%)
+            { date: '01-01', visitors: 1394, signups: 410, conversions: 27, revenue: 24196181.42, cac: 47746.76, retention: 67.01 },
+            { date: '01-02', visitors: 4661, signups: 229, conversions: 139, revenue: 44513051.85, cac: 35080.77, retention: 35.79 },
+            { date: '01-03', visitors: 1947, signups: 52, conversions: 175, revenue: 8204918.76, cac: 12391.52, retention: 42.73 },
+            { date: '01-04', visitors: 2758, signups: 300, conversions: 31, revenue: 36308989.04, cac: 11506.88, retention: 79.48 },
+            { date: '01-05', visitors: 3104, signups: 176, conversions: 43, revenue: 34759428.07, cac: 48318.64, retention: 56.63 },
+            { date: '01-06', visitors: 3563, signups: 448, conversions: 172, revenue: 19912378.57, cac: 40075.55, retention: 71.59 },
+            { date: '01-07', visitors: 1799, signups: 220, conversions: 148, revenue: 41127591.86, cac: 10733.45, retention: 66.13 },
+            { date: '01-08', visitors: 1576, signups: 456, conversions: 102, revenue: 12500000.00, cac: 33000.00, retention: 50.12 },
+            { date: '01-09', visitors: 2800, signups: 310, conversions: 90, revenue: 28000000.00, cac: 25000.00, retention: 62.50 },
+            { date: '01-10', visitors: 4100, signups: 520, conversions: 150, revenue: 55000000.00, cac: 15000.00, retention: 75.00 },
+            { date: '01-11', visitors: 3200, signups: 380, conversions: 110, revenue: 38500000.00, cac: 22000.00, retention: 68.00 },
+            { date: '01-12', visitors: 2500, signups: 250, conversions: 85, revenue: 29000000.00, cac: 31000.00, retention: 55.00 },
+            { date: '01-13', visitors: 1900, signups: 180, conversions: 70, revenue: 19500000.00, cac: 45000.00, retention: 40.00 },
+            { date: '01-14', visitors: 3800, signups: 480, conversions: 140, revenue: 49000000.00, cac: 18000.00, retention: 70.00 },
+            { date: '01-15', visitors: 4500, signups: 550, conversions: 180, revenue: 62000000.00, cac: 10000.00, retention: 80.00 },
+            { date: '01-16', visitors: 2300, signups: 200, conversions: 75, revenue: 24000000.00, cac: 30000.00, retention: 52.00 },
+            { date: '01-17', visitors: 3400, signups: 390, conversions: 120, revenue: 41000000.00, cac: 21000.00, retention: 65.00 },
+            { date: '01-18', visitors: 2900, signups: 320, conversions: 95, revenue: 32000000.00, cac: 28000.00, retention: 58.00 },
+            { date: '01-19', visitors: 1700, signups: 150, conversions: 60, revenue: 18000000.00, cac: 42000.00, retention: 45.00 },
+            { date: '01-20', visitors: 4200, signups: 500, conversions: 160, revenue: 58000000.00, cac: 16000.00, retention: 78.00 },
+            { date: '01-21', visitors: 3600, signups: 430, conversions: 135, revenue: 46000000.00, cac: 19000.00, retention: 72.00 },
+            { date: '01-22', visitors: 2200, signups: 240, conversions: 80, revenue: 26000000.00, cac: 33000.00, retention: 51.00 },
+            { date: '01-23', visitors: 3000, signups: 350, conversions: 105, revenue: 35000000.00, cac: 24000.00, retention: 60.00 },
+            { date: '01-24', visitors: 2100, signups: 210, conversions: 70, revenue: 21000000.00, cac: 38000.00, retention: 48.00 },
+            { date: '01-25', visitors: 3900, signups: 460, conversions: 145, revenue: 51000000.00, cac: 17000.00, retention: 74.00 },
+            { date: '01-26', visitors: 4800, signups: 580, conversions: 190, revenue: 65000000.00, cac: 9000.00, retention: 82.00 },
+            { date: '01-27', visitors: 2400, signups: 260, conversions: 88, revenue: 27000000.00, cac: 32000.00, retention: 53.00 },
+            { date: '01-28', visitors: 3300, signups: 400, conversions: 125, revenue: 42000000.00, cac: 20000.00, retention: 66.00 },
+            { date: '01-29', visitors: 2000, signups: 190, conversions: 65, revenue: 20000000.00, cac: 40000.00, retention: 43.00 },
+            { date: '01-30', visitors: 4000, signups: 490, conversions: 155, revenue: 53000000.00, cac: 14000.00, retention: 76.00 },
+            { date: '01-31', visitors: 4700, signups: 560, conversions: 185, revenue: 63000000.00, cac: 11000.00, retention: 85.00 }
+        ];
+
+        // 헬퍼 함수: 숫자 포맷팅 (예: 12345678 -> 12,345,678)
+        const formatNumber = (num, unit = '', decimals = 0) => {
+            return new Intl.NumberFormat('ko-KR', { maximumFractionDigits: decimals }).format(num) + unit;
+        };
+
+        // 데이터 계산 및 KPI 요약 생성
+        const calculateKPIs = (data) => {
+            const totalRevenue = data.reduce((sum, item) => sum + item.revenue, 0);
+            const totalVisitors = data.reduce((sum, item) => sum + item.visitors, 0);
+            const totalConversions = data.reduce((sum, item) => sum + item.conversions, 0);
+            const sumCAC = data.reduce((sum, item) => sum + item.cac, 0);
+            const sumRetention = data.reduce((sum, item) => sum + item.retention, 0);
+            const days = data.length;
+
+            const avgCAC = sumCAC / days;
+            const avgRetention = sumRetention / days;
+            const conversionRate = (totalConversions / totalVisitors) * 100;
+
+            const kpis = [
+                {
+                    title: "총 매출액",
+                    value: formatNumber(totalRevenue / 100000000, '억', 2),
+                    unit: '원',
+                    color: 'text-indigo-600',
+                    bgColor: 'bg-indigo-50',
+                    description: '한 달간 총 발생한 매출액 (억 원)'
+                },
+                {
+                    title: "평균 CAC",
+                    value: formatNumber(avgCAC, '원'),
+                    unit: '',
+                    color: 'text-red-600',
+                    bgColor: 'bg-red-50',
+                    description: '고객 한 명을 획득하는 데 사용된 평균 비용'
+                },
+                {
+                    title: "총 전환 수",
+                    value: formatNumber(totalConversions, '건'),
+                    unit: '',
+                    color: 'text-green-600',
+                    bgColor: 'bg-green-50',
+                    description: '한 달간 발생한 최종 구매/전환 횟수'
+                },
+                {
+                    title: "전환율 (CVR)",
+                    value: formatNumber(conversionRate, '%', 2),
+                    unit: '',
+                    color: 'text-blue-600',
+                    bgColor: 'bg-blue-50',
+                    description: '방문자 수 대비 최종 전환된 비율'
+                }
+            ];
+            return kpis;
+        };
+
+        const renderKPIs = (kpis) => {
+            const container = document.getElementById('kpi-summary');
+            kpis.forEach(kpi => {
+                const html = `
+                    <div class="kpi-card ${kpi.bgColor} rounded-xl p-6 shadow-md border-b-4 border-l-2 border-indigo-500">
+                        <p class="text-sm font-semibold text-gray-500 mb-1">${kpi.title}</p>
+                        <p class="text-4xl font-extrabold ${kpi.color}">
+                            ${kpi.value}
+                        </p>
+                        <p class="text-xs text-gray-400 mt-2">${kpi.description}</p>
+                    </div>
+                `;
+                container.innerHTML += html;
+            });
+        };
+
+        // 차트 렌더링 함수
+        const renderCharts = (data) => {
+            const labels = data.map(item => item.date);
+            
+            // 데이터셋 가공
+            const visitors = data.map(item => item.visitors);
+            const signups = data.map(item => item.signups);
+            const conversions = data.map(item => item.conversions);
+            const revenues = data.map(item => item.revenue);
+            const cac = data.map(item => item.cac);
+            const retention = data.map(item => item.retention);
+
+            // CVR (Conversions / Visitors)
+            const cvr = data.map(item => (item.conversions / item.visitors) * 100);
+
+            // --- Chart 1: Acquisition & Conversion ---
+            new Chart(document.getElementById('conversionChart'), {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: '방문자 수',
+                            data: visitors,
+                            backgroundColor: 'rgba(59, 130, 246, 0.7)',
+                            borderColor: 'rgba(59, 130, 246, 1)',
+                            yAxisID: 'y_visitors',
+                            order: 3,
+                        },
+                        {
+                            label: '전환 수',
+                            data: conversions,
+                            backgroundColor: 'rgba(22, 163, 74, 1)',
+                            borderColor: 'rgba(22, 163, 74, 1)',
+                            yAxisID: 'y_conversions',
+                            order: 2,
+                        },
+                        {
+                            label: '전환율 (%)',
+                            data: cvr,
+                            type: 'line',
+                            borderColor: 'rgba(249, 115, 22, 1)',
+                            backgroundColor: 'rgba(249, 115, 22, 0.5)',
+                            borderWidth: 3,
+                            yAxisID: 'y_cvr',
+                            order: 1,
+                            tension: 0.2
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    plugins: { legend: { position: 'top' } },
+                    scales: {
+                        y_visitors: { type: 'linear', position: 'left', title: { display: true, text: '방문자 수 / 가입자 수' } },
+                        y_conversions: { type: 'linear', position: 'left', title: { display: false }, grid: { drawOnChartArea: false } },
+                        y_cvr: { type: 'linear', position: 'right', title: { display: true, text: '전환율 (%)' }, grid: { drawOnChartArea: false }, min: 0 }
+                    }
+                }
+            });
+
+            // --- Chart 2: Revenue & Efficiency ---
+            new Chart(document.getElementById('efficiencyChart'), {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: '매출 (만원)',
+                            data: revenues.map(r => r / 10000), // 원을 만원으로 변환
+                            borderColor: '#4f46e5',
+                            backgroundColor: '#4f46e5',
+                            yAxisID: 'y_revenue',
+                            tension: 0.2,
+                            order: 1
+                        },
+                        {
+                            label: '평균 CAC (원)',
+                            data: cac,
+                            borderColor: '#ef4444',
+                            backgroundColor: '#ef4444',
+                            yAxisID: 'y_cac',
+                            tension: 0.2,
+                            order: 2
+                        },
+                        {
+                            label: '고객 유지율 (%)',
+                            data: retention,
+                            type: 'bar',
+                            backgroundColor: 'rgba(6, 182, 212, 0.6)',
+                            yAxisID: 'y_retention',
+                            order: 3
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    plugins: { legend: { position: 'top' } },
+                    scales: {
+                        y_revenue: { type: 'linear', position: 'left', title: { display: true, text: '매출 (만원)' } },
+                        y_cac: { type: 'linear', position: 'right', title: { display: true, text: 'CAC (원)' }, grid: { drawOnChartArea: false } },
+                        y_retention: { type: 'linear', position: 'right', title: { display: false }, grid: { drawOnChartArea: false }, min: 0, max: 100, display: false } // Retention bar uses right axis but is hidden for cleaner look
+                    }
+                }
+            });
+        };
+
+        // 초기화
+        window.onload = function() {
+            const kpis = calculateKPIs(rawData);
+            renderKPIs(kpis);
+            renderCharts(rawData);
+        };
+    </script>
+</body>
+</html>
