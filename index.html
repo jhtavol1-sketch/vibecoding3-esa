@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>케밋 - 새로운 만남을 시작하세요</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 전체 스타일 초기화 및 기본 폰트 설정 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f4f4f4; /* 이미지 배경색과 유사하게 설정 */
+            color: #333;
+        }
+
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 1. 상단 핑크색 배너 섹션 스타일 */
+        .header-section {
+            background-color: #fce4ec; /* 이미지와 동일한 연한 분홍색 배경 */
+            padding: 60px 0 40px 0;
+            text-align: center;
+        }
+
+        .header-section h1 {
+            font-size: 1.8rem;
+            font-weight: 700; 
+            color: #444;
+            margin-bottom: 5px;
+        }
+
+        .header-section p {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        .start-button {
+            display: inline-block;
+            background-color: #ff99aa; /* 이미지와 동일한 핑크색 버튼 */
+            color: white;
+            font-size: 0.95rem;
+            font-weight: 500; 
+            padding: 10px 25px;
+            border-radius: 20px; /* 둥근 모서리 */
+            text-decoration: none;
+            transition: background-color 0.3s;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .start-button:hover {
+            background-color: #ff6688;
+        }
+
+        /* 2. 중간 하이라이트 박스 섹션 스타일 */
+        .highlight-section {
+            display: flex;
+            justify-content: center;
+            gap: 15px; 
+            padding: 30px 0;
+            background-color: white; /* 흰색 배경 */
+            margin-bottom: 20px; 
+        }
+
+        .highlight-box {
+            background-color: white;
+            border: 1px solid #eee;
+            padding: 10px 20px;
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: #555;
+            border-radius: 20px; 
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); 
+        }
+
+        /* 3. 하단 이미지 및 슬로건 섹션 스타일 */
+        .main-content-section {
+            background-color: white; /* 흰색 배경 */
+            padding: 40px 0;
+            margin-bottom: 40px; 
+        }
+
+        .image-slogan-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center; 
+            justify-content: center; 
+            padding: 0 20px;
+        }
+
+        .image-wrapper {
+            background-color: white; 
+            padding: 0;
+            display: inline-block;
+        }
+
+        .couple-image {
+            width: 350px; 
+            height: auto;
+            display: block;
+        }
+
+        .slogan {
+            font-size: 4rem;
+            font-weight: 900; 
+            color: #333;
+            margin-left: 60px; 
+            white-space: nowrap; 
+        }
+
+        /* 모바일 반응형 디자인 */
+        @media (max-width: 768px) {
+            .highlight-section {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+            }
+            
+            .image-slogan-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .couple-image {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .slogan {
+                font-size: 3rem;
+                margin-left: 0;
+                margin-top: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header-section">
+        <div class="content-wrapper">
+            <h1>케밋과 함께 새로운 만남을 시작하세요.</h1>
+            <p>당신의 성향에 꼭 맞는 사람을 지금 만나세요.</p>
+            <a href="#" class="start-button">무료로 시작하기</a>
+        </div>
+    </header>
+
+    <section class="highlight-section">
+        <div class="highlight-box">인생의 반쪽을 찾았어요!</div>
+        <div class="highlight-box">인생의 반쪽을 찾았어요!</div>
+        <div class="highlight-box">인생의 반쪽을 찾았어요!</div>
+    </section>
+
+    <section class="main-content-section">
+        <div class="image-slogan-container">
+            <div class="image-wrapper">
+                 <img src="couple-image.png" alt="미소 짓는 남녀 커플" class="couple-image">
+            </div>
+            
+            <h2 class="slogan">함께해요 케밋!</h2>
+        </div>
+    </section>
+</body>
+</html>
