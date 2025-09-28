@@ -36,11 +36,11 @@
         /* 3. 이미지 위에 덧씌울 투명한 상담 예약 버튼 영역 (클릭 활성화) */
         .booking-link {
             position: absolute;
-            /* '상담예약' 버튼 위치에 맞춰 백분율로 조정 (esa1.png 기준) */
-            bottom: 8%; 
-            left: 15%;  
-            width: 35%; 
-            height: 10%; 
+            /* 이미지 하단의 '상담예약해 주세요.' 바 위치에 맞춰 조정 */
+            bottom: 0; 
+            left: 0;  
+            width: 100%; 
+            height: 15%; /* 하단 바의 높이에 맞게 조정 */
             
             /* 버튼 기능을 위한 투명한 오버레이 */
             background-color: transparent; 
@@ -48,8 +48,7 @@
             display: block; 
             text-decoration: none; 
             cursor: pointer;
-            z-index: 10;
-            border-radius: 50px; 
+            z-index: 10; 
             transition: opacity 0.2s;
         }
 
@@ -65,7 +64,7 @@
 <body>
 
 <div class="image-container">
-    <img src="esa1.png" alt="ESA 영어학원 광고: 영어 공부 시작할 때, 상담 예약">
+    <img src="esa1.png" alt="ESA 영어학원 광고: 지금은 영어 공부 시작할 때, 상담 예약해 주세요.">
     
     <a href="https://form.naver.com/edit/bPNypYePDocZEVMAFnEeJw" target="_blank" class="booking-link" title="상담 예약 페이지로 이동 (새 창)">
         </a>
