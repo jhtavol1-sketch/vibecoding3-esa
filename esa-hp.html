@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESA 영어학원 - 상담 예약</title>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f2f5;
+        }
+
+        /* 1. 이미지를 담는 핵심 컨테이너 */
+        .image-container {
+            position: relative;
+            /* 최대 너비를 설정하여 화면 크기에 따라 유연하게 조절됩니다. */
+            max-width: 800px; 
+            width: 90%; 
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            line-height: 0; /* 이미지 아래 불필요한 공백 제거 */
+        }
+
+        /* 2. 이미지가 잘리지 않게 원본 비율 유지 */
+        .image-container img {
+            width: 100%; /* 컨테이너 너비에 맞춤 */
+            height: auto; /* 높이를 자동으로 조절하여 원본 비율 유지 (핵심) */
+            display: block;
+        }
+
+        /* 3. 이미지 위에 덧씌울 투명한 상담 예약 버튼 영역 (클릭 활성화) */
+        .booking-link {
+            position: absolute;
+            /* '상담예약' 버튼 위치에 맞춰 백분율로 조정 (esa1.png 기준) */
+            bottom: 8%; 
+            left: 15%;  
+            width: 35%; 
+            height: 10%; 
+            
+            /* 버튼 기능을 위한 투명한 오버레이 */
+            background-color: transparent; 
+            
+            display: block; 
+            text-decoration: none; 
+            cursor: pointer;
+            z-index: 10;
+            border-radius: 50px; 
+            transition: opacity 0.2s;
+        }
+
+        /* 마우스 오버 시 시각적 효과 */
+        .booking-link:hover {
+            opacity: 0.8;
+        }
+        
+        /* (선택 사항) 한국어 폰트 임포트 */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
+    </style>
+</head>
+<body>
+
+<div class="image-container">
+    <img src="esa1.png" alt="ESA 영어학원 광고: 영어 공부 시작할 때, 상담 예약">
+    
+    <a href="https://form.naver.com/edit/bPNypYePDocZEVMAFnEeJw" target="_blank" class="booking-link" title="상담 예약 페이지로 이동 (새 창)">
+        </a>
+</div>
+
+</body>
+</html>
